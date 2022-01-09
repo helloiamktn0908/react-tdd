@@ -14,3 +14,8 @@ $ docker-compose exec app bash
 // appコンテナ内
 $ yarn add foo
 ```
+
+# 一応作業ブランチを切りましょう
+```
+$ git checkout -b practice/tk1351
+```
