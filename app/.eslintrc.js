@@ -54,6 +54,7 @@ module.exports = {
         allowAsStatement: true,
       },
     ],
+    'object-curly-spacing': 2
   },
   settings: {
     'import/resolver': {
