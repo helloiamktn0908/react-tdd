@@ -54,7 +54,14 @@ module.exports = {
         allowAsStatement: true,
       },
     ],
-    'object-curly-spacing': 2
+    'object-curly-spacing': 2,
+    'no-multi-spaces': 2,
+    'comma-spacing': 2,
+    'key-spacing': 2,
+    'react/jsx-indent': [2, 2],
+    'max-len': ['error', { 'code': 80 }],
+    'quotes': ['error', 'single'],
+    'jsx-quotes': ['error', 'prefer-single']
   },
   settings: {
     'import/resolver': {
