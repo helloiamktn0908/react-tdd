@@ -1,23 +1,46 @@
-import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
-import App from './App';
+import { render } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import React from 'react'
+import App from './App'
 
-test('renders learn react link', () => {
-  render(<App />);
+const setup = () => {
+  const utils = render(<App />)
+  const input = utils.getByLabelText('test-input')
+  const button = utils.getByLabelText('test-button')
+  return {
+    ...utils,
+    input,
+    button,
+  }
+}
 
-  const inputElement = screen.getByRole('textbox');
-  expect(inputElement).toBeInTheDocument
+describe('RTLの動作確認', () => {
+  it('inputが表示されていること', () => {
+    const { input } = setup()
+    expect(input).toBeInTheDocument()
+  })
 
-  const buttonElement = screen.getByRole('button')
-  expect(buttonElement).toBeInTheDocument
+  it('buttonが表示されていること', () => {
+    const { button } = setup()
+    expect(button).toBeInTheDocument()
+  })
 
-  expect(buttonElement).toHaveAttribute('disabled')
+  it('buttonが非活性であること', () => {
+    const { button } = setup()
+    expect(button).toBeDisabled()
+  })
 
-  fireEvent.change(inputElement, {
-    target: {value: 'abcde'}
-  });
-  expect(buttonElement).not.toHaveAttribute('disabled')
+  it('inputに文字が入力されるとbuttonが活性化すること', () => {
+    const { input, button } = setup()
+    expect(button).toBeDisabled()
+    userEvent.type(input, 'test')
+    expect(button).toBeEnabled()
+  })
 
-  const inputValue = screen.getByDisplayValue('abcde')
-  expect(inputValue).toBeInTheDocument
-});
+  it('inputの文字が正しく入力されること', () => {
+    const { input } = setup()
+    expect(input).toHaveValue('')
+    userEvent.type(input, 'test')
+    expect(input).toHaveValue('test')
+  })
+})
