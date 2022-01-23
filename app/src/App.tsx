@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  const [text, setText] = useState<string>('')
+  function changeText (e: any) {
+    setText(e.target.value)
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -19,6 +25,10 @@ function App() {
           Learn React
         </a>
       </header>
+      <body>
+        <input type="text" value={text} onChange={changeText}/>
+        <button type="button" disabled={text === ""}/>
+      </body>
     </div>
   );
 }
