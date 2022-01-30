@@ -21,17 +21,12 @@ module.exports = {
     tsconfigRootDir: __dirname,
     project: ['./tsconfig.json'],
   },
-  plugins: [
-    'react',
-    '@typescript-eslint',
-  ],
-  ignorePatterns: [
-    ".eslintrc.js"
-  ],
+  plugins: ['react', '@typescript-eslint'],
+  ignorePatterns: ['.eslintrc.js'],
   rules: {
-    'no-use-before-define': "off",
-    "@typescript-eslint/no-use-before-define": "off",
-    'import/prefer-default-export': "off",
+    'no-use-before-define': 'off',
+    '@typescript-eslint/no-use-before-define': 'off',
+    'import/prefer-default-export': 'off',
     'import/extensions': [
       'error',
       {
@@ -48,6 +43,7 @@ module.exports = {
       },
     ],
     'react/react-in-jsx-scope': 'off',
+    'react/jsx-no-bind': 'off',
     'no-void': [
       'error',
       {
@@ -59,16 +55,16 @@ module.exports = {
     'comma-spacing': 2,
     'key-spacing': 2,
     'react/jsx-indent': [2, 2],
-    'max-len': ['error', { 'code': 80 }],
-    'quotes': ['error', 'single'],
-    'jsx-quotes': ['error', 'prefer-single']
+    'max-len': ['error', { code: 80, ignorePattern: '^import .*' }],
+    quotes: ['error', 'single'],
+    'jsx-quotes': ['error', 'prefer-single'],
   },
   settings: {
     'import/resolver': {
       node: {
         paths: ['src'],
-        extensions: ['.js', '.jsx', '.ts', '.tsx']
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
     },
   },
-};
+}

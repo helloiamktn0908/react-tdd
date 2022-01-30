@@ -1,24 +1,11 @@
-import React, { useState } from 'react'
 import './App.css'
+import { TTJFormAndList } from './components/organisms/TTJFormAndList/TTJFormAndList'
 
 function App() {
-  const [text, setText] = useState('')
-  function changeText(e: React.ChangeEvent<HTMLInputElement>) {
-    setText(e.target.value)
-  }
-
   return (
-    <div className='App'>
-      <body>
-        <input
-          type='text'
-          aria-label='test-input'
-          value={text}
-          onChange={changeText}
-        />
-        <button type='button' aria-label='test-button' disabled={text === ''} />
-      </body>
-    </div>
+    <main>
+      <TTJFormAndList />
+    </main>
   )
 }
 
